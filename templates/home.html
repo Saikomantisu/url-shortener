@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='libs/skeleton.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <title>URL Shortener</title>
+</head>
+<body>
+    <div class="container">
+        <header class="navbar">
+            <h1>URL Shortener</h1>
+        </header>
+
+        <form action="/create_short_url" method="POST">
+            <label for="longURL">Long URL:</label>
+            <input class="u-full-width" type="url" name="longURL" placeholder="Enter The Link Here" required>
+            <input type="submit" value="Short" class="button-primary">
+        </form>
+
+        <h5 class="title">Short URLs</h5>
+        <table class="u-full-width">
+            <thead>
+                <tr>
+                    <th>Full URL</th>
+                    <th>Short URL</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for short in short_urls %}
+                    <tr>
+                        <td><a href="{{ short.long_url }}">{{ short.long_url }}</a></td>
+                        <td><a href="{{ short.short_url }}">{{ short.short_url }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+    </div>
+</body>
+</html>
