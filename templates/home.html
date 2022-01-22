@@ -24,15 +24,17 @@
         <table class="u-full-width">
             <thead>
                 <tr>
-                    <th>Full URL</th>
+                    <th>Long URL</th>
                     <th>Short URL</th>
+                    <th>Remove</th>
                 </tr>
             </thead>
             <tbody>
                 {% for short in short_urls %}
                     <tr>
                         <td><a href="{{ short.long_url }}">{{ short.long_url }}</a></td>
-                        <td><a href="{{ short.short_url }}">{{ short.short_url }}</a></td>
+                        <td><a href="/redirect/{{ short.code }}">{{ short.code }}</a></td>
+                        <td><a href="/remove/{{ short.code }}" class="remove">❌`</a></td>
                     </tr>
                 {% endfor %}
             </tbody>

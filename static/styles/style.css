@@ -16,3 +16,7 @@
     font-weight: bold;
     margin: 0;
 }
+
+.remove {
+    text-decoration: none;
+}
